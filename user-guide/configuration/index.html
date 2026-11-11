@@ -423,10 +423,17 @@ sub-directories. Index files will always be listed first within a sub-section.</
 <p>This config defines patterns of files (under <a href="#docs_dir"><code>docs_dir</code></a>) to not be picked up into the built site.</p>
 <p>Example:</p>
 <pre class="highlight"><code class="language-yaml">exclude_docs: |
-  api-config.json    # A file with this name anywhere.
-  /requirements.txt  # Top-level "docs/requirements.txt".
-  *.py               # Any file with this extension anywhere.
-  !/foo/example.py   # But keep this particular file.</code></pre>
+  # A file with this name anywhere.
+  api-config.json
+
+  # Top-level "docs/requirements.txt".
+  /requirements.txt
+
+  # Any file with this extension anywhere.
+  *.py
+
+  # But keep this particular file.
+  !/foo/example.py</code></pre>
 <p>This follows the <a href="https://git-scm.com/docs/gitignore#_pattern_format">.gitignore pattern format</a>.</p>
 <p>The following defaults are always implicitly prepended - to exclude dot-files (and directories) as well as the top-level <code>templates</code> directory:</p>
 <pre class="highlight"><code class="language-yaml">exclude_docs: |
@@ -435,7 +442,8 @@ sub-directories. Index files will always be listed first within a sub-section.</
 <p>So, in order to really start this config fresh, you'd need to specify a negated version of these entries first.</p>
 <p>Otherwise you could for example opt only certain dot-files back into the site:</p>
 <pre class="highlight"><code class="language-yaml">exclude_docs: |
-  !.assets  # Don't exclude '.assets' although all other '.*' are excluded</code></pre>
+  # Don't exclude '.assets' although all other '.*' are excluded
+  !.assets</code></pre>
 <h3 id="draft_docs">draft_docs<a class="headerlink" href="#draft_docs" title="Permanent link"></a></h3>
 <div class="admonition new">
 <p class="admonition-title">New in version 1.6</p>
@@ -443,9 +451,14 @@ sub-directories. Index files will always be listed first within a sub-section.</
 <p>This config defines patterns of files (under <a href="#docs_dir"><code>docs_dir</code></a>) to be treated as a draft.  Draft files are available during <code>mkdocs serve</code> and include a "DRAFT" mark but will not be included in the build. To prevent this effect and make "serve" behave the same as "build", you can run <code>mkdocs serve --clean</code>.</p>
 <p>Example:</p>
 <pre class="highlight"><code class="language-yaml">draft_docs: |
-  drafts/               # A "drafts" directory anywhere.
-  _unpublished.md       # A md file ending in _unpublished.md
-  !/foo_unpublished.md  # But keep this particular file.</code></pre>
+  # A "drafts" directory anywhere.
+  drafts/
+
+  # A Markdown file ending in _unpublished.md anywhere.
+  *_unpublished.md
+
+  # But keep this particular file.
+  !/foo_unpublished.md</code></pre>
 <p>This follows the <a href="https://git-scm.com/docs/gitignore#_pattern_format">.gitignore pattern format</a>.</p>
 <h3 id="not_in_nav">not_in_nav<a class="headerlink" href="#not_in_nav" title="Permanent link"></a></h3>
 <div class="admonition new">
@@ -807,7 +820,7 @@ and is usually what you'll want to use.</p>
 <tr>
 <td>about/license.md</td>
 <td>/about/license/index.html</td>
-<td>/about/license</td>
+<td>/about/license/</td>
 </tr>
 </tbody>
 </table>
